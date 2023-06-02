@@ -1,0 +1,94 @@
+﻿@model List<Laba_2.Models.Person>
+@using Laba_2.external_method
+
+@{
+    Layout = "~/Views/__BasicLayout.cshtml";
+    ViewBag.Title = "Data Base";
+}
+
+<style>
+    h2 {
+        font-size: 36px;
+        color: #333;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* Стилизация таблицы */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .table th,
+        .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+    .hyperlink {
+        font-size: 18px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .hyperlink a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .hyperlink a:hover {
+                background-color: #3e8e41;
+            }
+</style>
+
+
+@helper ListArrayItems(List<Laba_2.Models.Person> Model)
+{
+    foreach (var person in Model)
+    {
+        <tr>
+            <td>@person.PersonId</td>
+            <td>@person.FirstName</td>
+            <td>@person.LastName</td>
+            <td>@person.PersonAge</td>
+            <td>@person.Phone</td>
+            <td>@person.Email</td>
+            <td>@(person.PremiumSub ? "Yes" : "No")</td>
+        </tr>
+    }
+}
+
+<h2>Data Base</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Premium Subscription</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if ((bool)TempData["method"])
+        {
+            @Html.ListArrayItems(Model)
+        }
+        else
+        {
+            @ListArrayItems(Model);
+        }
+    </tbody>
+</table>
+<p class="hyperlink">@Html.ActionLink("Создать аккаунт", "Creat_Data")</p>

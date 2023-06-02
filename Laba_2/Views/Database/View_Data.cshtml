@@ -1,0 +1,71 @@
+﻿@model Laba_2.Models.Person
+
+@{
+    Layout = "~/Views/__BasicLayout.cshtml";
+    ViewBag.Title = "Созданный аккаунт";
+}
+
+<style>
+    h2 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    .account-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+        .account-info .display-label {
+            text-align: left;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            width: 30%;
+            text-transform: uppercase;
+        }
+
+        .account-info .display-field {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            width: 30%;
+            box-sizing: border-box;
+        }
+
+    .hyperlink {
+        font-size: 18px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .hyperlink a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .hyperlink a:hover {
+                background-color: #3e8e41;
+            }
+</style>
+
+<h2>Созданный аккаунт:</h2>
+
+<div class="account-info">
+    @Html.LabelForModel()
+    @Html.DisplayForModel()
+</div>
+
+<p class="hyperlink">@Html.ActionLink("Перейти к созданию", "Creat_Data")</p>
+<p class="hyperlink">@Html.ActionLink("База Данных", "Data_Base")</p>

@@ -1,0 +1,88 @@
+﻿@model Laba_2.Models.Person
+
+@{
+    Layout = "~/Views/__BasicLayout.cshtml";
+    ViewBag.Title = "CreatePerson";
+}
+
+<style>
+    h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    label {
+        text-align:left;
+        font-size: 18px;
+        width: 30%;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+
+    .check-box{
+        width: 20px;
+    }
+    
+    input {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        width: 30%;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        margin-top: 20px;
+        width: 20%;
+    }
+
+    button:hover {
+        background-color: #3e8e41;
+    }
+</style>
+
+<h2>Создание аккаунта:</h2>
+@using (Html.BeginForm("View_Data", "Database", FormMethod.Post))
+{
+    <label>@Html.LabelFor(m => m.FirstName)</label>
+    @Html.EditorFor(m => m.FirstName)
+
+    <label>@Html.LabelFor(m => m.LastName)</label>
+    @Html.EditorFor(m => m.LastName)
+
+    <label>@Html.LabelFor(m => m.PersonAge)</label>
+    @Html.EditorFor(m => m.PersonAge)
+
+    <label>@Html.LabelFor(m => m.Phone)</label>
+    @Html.EditorFor(m => m.Phone)
+
+    <label>@Html.LabelFor(m => m.Email)</label>
+    @Html.EditorFor(m => m.Email)
+
+    <label>@Html.LabelFor(m => m.Password)</label>
+    @Html.EditorFor(m => m.Password)
+
+    <div>@Html.LabelFor(m => m.PremiumSub)
+    @Html.EditorFor(m => m.PremiumSub)</div>
+
+    <button type="submit">Создать</button>
+}
